@@ -101,7 +101,7 @@ Sboxes = [
     ]
 ]
 # Permutation Matrix used after each SBox substitution for each round
-straightPermutation = [
+firstPbox = [
     16, 7, 20, 21, 29, 12, 28, 17,
     1, 15, 23, 26, 5, 18, 31, 10,
     2, 8, 24, 14, 32, 27, 3, 9,
@@ -121,7 +121,7 @@ finalPermutation = [
 def main():
     print()
     # Taking inputs from the user
-    plaintext = input("Enter the message to be encrypted : ")
+    plaintext = input("Enter the message to be encrypt : ")
     key = input("Enter a key of 8 length (64-bits) (characters or numbers only) : ")
     print()
     # Checking if key is valid or not
@@ -190,7 +190,7 @@ def DES(text, key, padding, isEncrypt):
             # Sbox substitution Step
             temp = SboxSubstitution(temp)
             # Permutation Step
-            temp = permutation(temp, straightPermutation)
+            temp = permutation(temp, firstPbox)
             # XOR Step with leftBlock
             temp = xor(leftBlock, temp)
             # Blocks swapping
